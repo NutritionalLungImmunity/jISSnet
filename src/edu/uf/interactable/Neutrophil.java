@@ -12,6 +12,12 @@ import edu.uf.utils.Rand;
 
 public class Neutrophil extends Leukocyte{
     public static final String NAME = "Neutrophils";
+    
+    public static int MECH = 0;
+    
+    public static final int KILL_INJ = 0;
+    public static final int KILL = 1;
+    public static final int DNASE = 2;
 
 
     private static String chemokine;
@@ -198,14 +204,23 @@ public class Neutrophil extends Leukocyte{
         if(interactable instanceof PneumocyteI) {
         	if(this.hasPhenotype(NeutrophilStateModel.NETOTIC)) {
         		PneumocyteI k = (PneumocyteI) interactable;
+        		
+        		if(Neutrophil.MECH == KILL) {
+        			if((control && Rand.getRand().randunif() < Constants.PR_NET_KILL_EPI)) {
+                		//if(false) {
+                			k.die();
+                		}//else {
+                			control = false;
+        		}else if (MECH  == KILL_INJ) {
         		//k.setInjury(true);
-        		//if(k.isInjury() || (control && Rand.getRand().randunif() < Constants.PR_NET_KILL_EPI)) {
-        		if((control && Rand.getRand().randunif() < Constants.PR_NET_KILL_EPI)) {
+        		if(k.isInjury()) { // || (control && Rand.getRand().randunif() < Constants.PR_NET_KILL_EPI)) {
+        		//if((control && Rand.getRand().randunif() < Constants.PR_NET_KILL_EPI)) {
         		//if(false) {
         			k.die();
         		}//else {
         			control = false;
         		//}
+        		}
         	}
 			return true;
 		}

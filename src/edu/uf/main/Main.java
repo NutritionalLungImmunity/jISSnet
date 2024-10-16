@@ -8,15 +8,14 @@ import edu.uf.compartments.GridFactory;
 import edu.uf.compartments.MacrophageRecruiter;
 import edu.uf.compartments.NeutrophilRecruiter;
 import edu.uf.compartments.Recruiter;
+import edu.uf.interactable.Neutrophil;
 import edu.uf.interactable.Afumigatus.Afumigatus;
 import edu.uf.main.initialize.Initialize;
 import edu.uf.main.initialize.InitializeBaseModel;
-import edu.uf.main.initialize.InitializeTranexamicModel;
 import edu.uf.main.print.PrintHemeModel;
 import edu.uf.main.run.Run;
 import edu.uf.main.run.RunSingleThread;
 import edu.uf.utils.Constants;
-import edu.uf.utils.Rand;
 
 public class Main {
 	
@@ -29,19 +28,20 @@ public class Main {
 		 * //if(k.isInjury() || (control && Rand.getRand().randunif() < Constants.PR_NET_KILL_EPI)) {
          *	//if((control && Rand.getRand().randunif() < Constants.PR_NET_KILL_EPI)) {
 		 */
+		Neutrophil.MECH = Neutrophil.KILL_INJ;
 
 		
 		Constants.PR_NET_KILL_EPI *= 0.25;//Double.parseDouble(args[0]);//(0.1*Double.parseDouble(args[0]));
 		Constants.NET_COUNTER_INHIBITION = 0.0;//Double.parseDouble(args[0]);
 		Constants.HEME_QTTY *= 10;//Double.parseDouble(args[0]);
-		Constants.HEME_UP  *= 1.0;//0.75;//Double.parseDouble(args[1]);
+		Constants.HEME_UP  *= 0.5;//0.75;//Double.parseDouble(args[1]);
 		
 		int i = 0;//Integer.parseInt(args[0]);
 		
 		String filename = "HemeNET025_";// + args[0] + "_";
 
 		filename += i + ".tsv";
-			
+		 	
 		Initialize initialize = new InitializeBaseModel();
 		Run run = new RunSingleThread();
 		PrintHemeModel stat = new PrintHemeModel();
@@ -111,13 +111,13 @@ public class Main {
         //recruiters[1] = new NeutrophilReplenisher();
         
         run.run(
-        		1366,//(int) 72*2*(30/Constants.TIME_STEP_SIZE),  
+        		1441,//(int) 72*2*(30/Constants.TIME_STEP_SIZE),  
         		xbin, 
         		ybin, 
         		zbin,  
         		recruiters,
         		false,
-        		null, //new File(filename),//new File("/Users/henriquedeassis/Documents/Projects/Afumigatus/data/ganlin/" + filename),
+        		null, //new File(filename),
         		-1,
         		stat
         );
@@ -129,7 +129,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		//Turnover and degrade changed: Turnover now is automatic. In the future there should be turnover and then degrade in the serum.
 		//Current Turnover rate is wrong. Should it be (1-Turnover_rate)?
-		System.out.println("jISS");
+		System.out.println("jISSnet");
 		long tic = System.currentTimeMillis();
 		Main.baseModel(args);
 		long toc = System.currentTimeMillis();
