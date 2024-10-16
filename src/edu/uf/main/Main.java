@@ -31,7 +31,7 @@ public class Main {
 		Constants.PR_NET_KILL_EPI *= 0.25;//Double.parseDouble(args[0]);//(0.1*Double.parseDouble(args[0]));
 		Constants.NET_COUNTER_INHIBITION = 0.0;//Double.parseDouble(args[0]);
 		Constants.HEME_QTTY *= 10;//Double.parseDouble(args[0]);
-		Constants.HEME_UP  *= 0.75;//0.75;//Double.parseDouble(args[1]);
+		Constants.HEME_UP  *= 0.5;//0.75;//Double.parseDouble(args[1]);
 		
 		int i = 0;//Integer.parseInt(args[0]);
 		
