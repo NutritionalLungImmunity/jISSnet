@@ -21,20 +21,17 @@ public class Main {
 	
 	private static void baseModel(String[] args) throws InterruptedException {
 		
-		/*
-		 * the different neutrophils mechanism are hard-coded
-		 * these two line represent one with previous injury and the one without previous injury. Comment and uncomment the other for changing the mechanism
-		 * (Go go: edu.uf.interactable.Neutrophil, lines 202 and 203)
-		 * //if(k.isInjury() || (control && Rand.getRand().randunif() < Constants.PR_NET_KILL_EPI)) {
-         *	//if((control && Rand.getRand().randunif() < Constants.PR_NET_KILL_EPI)) {
-		 */
-		Neutrophil.MECH = Neutrophil.KILL_INJ;
+
+		Neutrophil.MECH = Neutrophil.KILL_INJ; //use this for kill-injured (NET only kills type-I pneumocytes previously injured by hyphae)
+		//Neutrophil.MECH = Neutrophil.KILL; //use this for kill (NET kill type-I pneumocytes with a probability independent of hyphae)
+		//Neutrophil.MECH = Neutrophil.DNASE; //use this for no NETs (NET will not kill type-I pneumocytes)
+		//the three above are mutually exclusive. "KILL_INJ" is the default.
 
 		
 		Constants.PR_NET_KILL_EPI *= 0.25;//Double.parseDouble(args[0]);//(0.1*Double.parseDouble(args[0]));
 		Constants.NET_COUNTER_INHIBITION = 0.0;//Double.parseDouble(args[0]);
 		Constants.HEME_QTTY *= 10;//Double.parseDouble(args[0]);
-		Constants.HEME_UP  *= 0.5;//0.75;//Double.parseDouble(args[1]);
+		Constants.HEME_UP  *= 0.75;//0.75;//Double.parseDouble(args[1]);
 		
 		int i = 0;//Integer.parseInt(args[0]);
 		
