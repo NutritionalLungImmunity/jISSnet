@@ -341,14 +341,14 @@ public class Constants {
     public static double INTERNAL_IRON_KM = 4.742739e-05; //0.6 * Kd_LIP -- fit to kd LIP
     public static double INTERNAL_HEME_KM = 9.790121e-07; //Angelica's paper
     public static double HEME_INIT_QTTY = 1.034651e-18; //INTERNAL_HEME_KM * HYPHAE_VOL
-    public static double HEME_QTTY = 1.034651e-18*200; //Angelica's paper (Fig 5C)
+    public static double HEME_QTTY = 2.069302e-16;//1.034651e-18*200; //Angelica's paper (Fig 5C)
     
     public static double PR_NET_KILL_EPI  = 0.0512749; //10.1371/journal.pone.0032366 (Fig 2B)
     
     public static double PR_ASP_KILL_EPI = 0.02508277; //10.1371/journal.pone.0036952 -- 1:1 cell/C. albicans -> 30 cytotox in 24h
     
     public static double NET_COUNTER_INHIBITION = 0.5;
-    
+     
     public static double DNAse_KCAT = 0.007701635; //same as NET_HALF_LIFE
     public static double DNAse_HALF_LIFE = 0.9451153*0.9768950939813351;;
     
